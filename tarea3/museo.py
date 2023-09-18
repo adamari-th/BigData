@@ -53,13 +53,13 @@ img.save('mapa.png')
 doc = SimpleDocTemplate("ReporteFinal.pdf", pagesize=letter)
 
 styles = getSampleStyleSheet()
-contenido = []
+datos = []
 
 titulo = "The best Galleries and Museums\n"
-contenido.append(Paragraph(titulo, styles["Title"]))
+datos.append(Paragraph(titulo, styles["Title"]))
 
 imagen_mapa = Image("mapa.png", width=400, height=200)
-contenido.append(imagen_mapa)
+datos.append(imagen_mapa)
 
 for index, row in museo3.iterrows():
     name = row['NAME']
@@ -68,8 +68,7 @@ for index, row in museo3.iterrows():
 
     # Crear un párrafo de texto con los datos
     texto_datos = f"\nName: {name} \nAddress: {address} \nGrade: {rating}"
-    contenido.append(Paragraph(texto_datos, styles["Normal"]))
+    datos.append(Paragraph(texto_datos, styles["Normal"]))
 
 
-doc.build(contenido)
-museo.to_csv('Galerias&Museo.csv', index=False)
+doc.build(datos)
